@@ -1,0 +1,4 @@
+Basada en las pruebas E2E realizadas a la pagina "https://www.demoblaze.com/", se concluye lo siguiente:
+1.- Se debe de pedir autenticacion del usuario antes de realizar las compras.
+2.- No se visualiza  detalladamente la informacion de la mercaderia (procedencia, si es usado o no, etc)
+3.- No se valida los datos que se ingresan al momento de realizar la compra.

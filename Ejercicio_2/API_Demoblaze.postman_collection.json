@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "9a4229bb-8c2a-42b8-b257-7daf11d3d168",
+		"name": "API_Demoblaze",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25082844"
+	},
+	"item": [
+		{
+			"name": "Crear usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should status code be 200 OK\", function() {\r",
+							"    pm.expect(pm.response.code).to.eq(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Should response body be empty string.\", function() {\r",
+							"    let body =  pm.response.json();\r",
+							"    pm.expect(body).to.eq('');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jorge88\",\r\n    \"password\": \"Ecuador1988\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{singupURL}}",
+					"host": [
+						"{{singupURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario ya existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Should return Error Message\", function(){\r",
+							"    let body = pm.response.json();\r",
+							"    pm.expect(body.errorMessage).to.eql(\"This user already exist.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jorge88\",\r\n    \"password\": \"Ecuador1988\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{singupURL}}",
+					"host": [
+						"{{singupURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sould return Auth Token\", function() {\r",
+							"    let body = pm.response.json();\r",
+							"    pm.expect(body).includes(\"Auth_token\");\r",
+							"    console.log(body)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jorge88\",\r\n    \"password\": \"Ecuador1988\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{loginURL}}",
+					"host": [
+						"{{loginURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Incorrecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Should return Error Message  'Wrong password'\", function(){\r",
+							"    let body = pm.response.json();\r",
+							"    console.log(body.errorMessage);\r",
+							"    pm.expect(body.errorMessage).to.eql(\"Wrong password.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jorge88\",\r\n    \"password\": \"Ecuador8819\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{loginURL}}",
+					"host": [
+						"{{loginURL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "singupURL",
+			"value": "https://api.demoblaze.com/signup"
+		},
+		{
+			"key": "loginURL",
+			"value": "https://api.demoblaze.com/login"
+		}
+	]
+}

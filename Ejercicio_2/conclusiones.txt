@@ -1,0 +1,4 @@
+Basada en las pruebas realizadas con la herramienta POSTMAN, la media del tiempo de respuesta es de 328ms. 
+Se deberia hacer pruebas de carga y extres para confirmar si los tiempos de respuestas son buenos o no; solo se ha realizado una prueba con una sola peticion.
+Se debe de validar tambien que tipo de caracteres se pueden ingresar en como contraseña ya que actualmente se puede ingresar como contraseña espacios en blanco 
+por ende no se esta siguiendo las recomendaciones seguridad y calidad
