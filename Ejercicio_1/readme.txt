@@ -7,3 +7,5 @@ Las pruebas E2E se han desarrollado con la herramienta cypress, los pasos a segu
 6.- Se confirma las compras de los 2 productos
 7.- Se ingreso los datos del cliente para la compra
 8.- Se visualiza la confirmacion de la compra
+
+Nota: El archico de ejecucion se llama "demoblaze.spec.js" 
